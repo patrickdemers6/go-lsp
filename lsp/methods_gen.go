@@ -4,8 +4,8 @@ package lsp
 import (
 	"context"
 
-	"github.com/TobiasYin/go-lsp/jsonrpc"
-	"github.com/TobiasYin/go-lsp/lsp/defines"
+	"github.com/patrickdemers6/go-lsp/jsonrpc"
+	"github.com/patrickdemers6/go-lsp/lsp/defines"
 )
 
 type Methods struct {
@@ -215,6 +215,20 @@ func (m *Methods) didChangeWatchedFilesMethodInfo() *jsonrpc.MethodInfo {
 	}
 	return &jsonrpc.MethodInfo{
 		Name: "didChangeWatchedFiles",
+		NewRequest: func() interface{} {
+			return &defines.DidChangeWatchedFilesParams{}
+		},
+		Handler: m.didChangeWatchedFiles,
+	}
+}
+
+func (m *Methods) didChangeWatchedFilesWorkspaceMethodInfo() *jsonrpc.MethodInfo {
+
+	if m.onDidChangeWatchedFiles == nil {
+		return nil
+	}
+	return &jsonrpc.MethodInfo{
+		Name: "workspace/didChangeWatchedFiles",
 		NewRequest: func() interface{} {
 			return &defines.DidChangeWatchedFilesParams{}
 		},
@@ -1210,6 +1224,7 @@ func (m *Methods) GetMethods() []*jsonrpc.MethodInfo {
 		m.exitMethodInfo(),
 		m.didChangeConfigurationMethodInfo(),
 		m.didChangeWatchedFilesMethodInfo(),
+		m.didChangeWatchedFilesWorkspaceMethodInfo(),
 		m.didOpenTextDocumentMethodInfo(),
 		m.didChangeTextDocumentMethodInfo(),
 		m.didCloseTextDocumentMethodInfo(),

@@ -5,8 +5,8 @@ import (
 	"net"
 	"reflect"
 
-	"github.com/TobiasYin/go-lsp/jsonrpc"
-	"github.com/TobiasYin/go-lsp/logs"
+	"github.com/patrickdemers6/go-lsp/jsonrpc"
+	"github.com/patrickdemers6/go-lsp/logs"
 )
 
 type Server struct {

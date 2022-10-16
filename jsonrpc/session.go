@@ -10,8 +10,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/TobiasYin/go-lsp/logs"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/patrickdemers6/go-lsp/logs"
 )
 
 type sessionKeyType struct{}
