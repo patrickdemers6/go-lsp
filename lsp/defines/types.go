@@ -235,7 +235,7 @@ type Diagnostic struct {
 
 	// The diagnostic's severity. Can be omitted. If omitted it is up to the
 	// client to interpret diagnostics as error, warning, info or hint.
-	Severity *DiagnosticSeverity `json:"severity,omitempty"`
+	Severity DiagnosticSeverity `json:"severity,omitempty"`
 
 	// The diagnostic's code, which usually appear in the user interface.
 	Code interface{} `json:"code,omitempty"` // int, string,
